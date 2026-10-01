@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f2ed">
+    <title>ShopEase | Everyday essentials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="ShopEase home">shop<span>ease</span><i>.</i></a>
+        <p class="header-note">Thoughtful things for every day</p>
+        <button class="cart-button" type="button" aria-label="Bag, 0 products added">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+            <span class="cart-label">Bag</span>
+            <span class="cart-count" aria-live="polite">0</span>
+        </button>
+    </header>
+
+    <main id="top">
+        <section class="intro" aria-labelledby="page-title">
+            <div class="intro-copy">
+                <p class="eyebrow">THE EVERYDAY EDIT &middot; NO. 04</p>
+                <h1 id="page-title">Good things,<br><em>well chosen.</em></h1>
+                <p class="intro-description">Considered staples, made for the way you live now.</p>
+                <a class="shop-link" href="#collection">Explore the collection <span aria-hidden="true">&darr;</span></a>
+            </div>
+            <div class="intro-aside" aria-label="Collection note">
+                <img class="intro-image" src="images/product3.jpg" alt="Ivory handbag with leather straps and brass hardware">
+                <span class="aside-mark">S/E</span>
+                <p>Wear often.<br>Keep for longer.</p>
+                <span class="aside-rule"></span>
+                <span class="aside-index">SPRING / SUMMER 2025</span>
+            </div>
+        </section>
+
+        <section class="collection" id="collection" aria-labelledby="collection-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">A SMALL, GOOD COLLECTION</p>
+                    <h2 id="collection-title">Made to be kept</h2>
+                </div>
+                <span class="item-total">04 OBJECTS</span>
+            </div>
+            <div class="product-container">
+                <article class="product-card" data-product-id="shirt-classic">
+                    <div class="product-visual">
+                        <img class="product-image" src="images/product1.jpg" alt="Charcoal cotton shirt on a wooden hanger">
+                        <span class="product-tag">BESTSELLER</span>
+                        <div class="product-actions">
+                            <button class="add-button" type="button" aria-label="Add Men's Cotton Shirt to cart"><span aria-hidden="true">+</span> Add to bag</button>
+                            <div class="quantity-selector" hidden>
+                                <button class="quantity-button" type="button" data-change="-1" aria-label="Remove one Men's Cotton Shirt">-</button>
+                                <span class="quantity-value" aria-live="polite">0</span>
+                                <button class="quantity-button" type="button" data-change="1" aria-label="Add one more Men's Cotton Shirt">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info"><div><h3>Men's Cotton Shirt</h3><p>Soft structure, everyday ease</p></div><span class="product-price">₹999</span></div>
+                </article>
+                <article class="product-card" data-product-id="shirt-premium">
+                    <div class="product-visual">
+                        <img class="product-image" src="images/product2.jpg" alt="Premium cotton shirt">
+                        <div class="product-actions">
+                            <button class="add-button" type="button" aria-label="Add Premium Cotton Shirt to cart"><span aria-hidden="true">+</span> Add to bag</button>
+                            <div class="quantity-selector" hidden>
+                                <button class="quantity-button" type="button" data-change="-1" aria-label="Remove one Premium Cotton Shirt">-</button>
+                                <span class="quantity-value" aria-live="polite">0</span>
+                                <button class="quantity-button" type="button" data-change="1" aria-label="Add one more Premium Cotton Shirt">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info"><div><h3>Premium Cotton Shirt</h3><p>A little more room to breathe</p></div><span class="product-price">₹1,299</span></div>
+                </article>
+                <article class="product-card" data-product-id="handbag-structured">
+                    <div class="product-visual">
+                        <img class="product-image" src="images/product3.jpg" alt="Structured everyday handbag">
+                        <span class="product-tag product-tag-new">JUST IN</span>
+                        <div class="product-actions">
+                            <button class="add-button" type="button" aria-label="Add Everyday Handbag to cart"><span aria-hidden="true">+</span> Add to bag</button>
+                            <div class="quantity-selector" hidden>
+                                <button class="quantity-button" type="button" data-change="-1" aria-label="Remove one Everyday Handbag">-</button>
+                                <span class="quantity-value" aria-live="polite">0</span>
+                                <button class="quantity-button" type="button" data-change="1" aria-label="Add one more Everyday Handbag">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info"><div><h3>Everyday Handbag</h3><p>Room for what matters</p></div><span class="product-price">₹799</span></div>
+                </article>
+                <article class="product-card" data-product-id="handbag-mini">
+                    <div class="product-visual">
+                        <img class="product-image" src="images/product4.jpg" alt="Compact women's handbag">
+                        <div class="product-actions">
+                            <button class="add-button" type="button" aria-label="Add Mini Handbag to cart"><span aria-hidden="true">+</span> Add to bag</button>
+                            <div class="quantity-selector" hidden>
+                                <button class="quantity-button" type="button" data-change="-1" aria-label="Remove one Mini Handbag">-</button>
+                                <span class="quantity-value" aria-live="polite">0</span>
+                                <button class="quantity-button" type="button" data-change="1" aria-label="Add one more Mini Handbag">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info"><div><h3>Mini Handbag</h3><p>Small shape, long days</p></div><span class="product-price">₹1,499</span></div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const cartButton = document.querySelector('.cart-button');
+        const cartCount = document.querySelector('.cart-count');
+        const productCards = [...document.querySelectorAll('.product-card')];
+        const productIds = new Set(productCards.map((card) => card.dataset.productId));
+        let quantities = {};
+
+        try {
+            const savedQuantities = JSON.parse(localStorage.getItem('shopease-product-quantities') || 'null');
+            if (savedQuantities && typeof savedQuantities === 'object' && !Array.isArray(savedQuantities)) {
+                quantities = Object.fromEntries(Object.entries(savedQuantities).filter(([id, quantity]) => productIds.has(id) && Number.isSafeInteger(quantity) && quantity > 0));
+            } else {
+                const previousCart = JSON.parse(localStorage.getItem('shopease-cart') || '[]');
+                if (Array.isArray(previousCart)) {
+                    quantities = Object.fromEntries(previousCart.filter((item) => productIds.has(item.id) && Number.isSafeInteger(item.quantity) && item.quantity > 0).map((item) => [item.id, item.quantity]));
+                }
+            }
+            localStorage.removeItem('shopease-item-count');
+        } catch {
+            quantities = {};
+        }
+
+        function updateCart() {
+            let totalItems = 0;
+            productCards.forEach((card) => {
+                const quantity = quantities[card.dataset.productId] || 0;
+                totalItems += quantity;
+                card.querySelector('.add-button').hidden = quantity > 0;
+                card.querySelector('.quantity-selector').hidden = quantity === 0;
+                card.querySelector('.quantity-value').textContent = quantity;
+                card.querySelector('.product-actions').classList.toggle('in-cart', quantity > 0);
+            });
+
+            cartCount.textContent = totalItems;
+            const itemLabel = totalItems === 1 ? 'product' : 'products';
+            cartButton.setAttribute('aria-label', `Bag, ${totalItems} ${itemLabel} added`);
+            try {
+                localStorage.setItem('shopease-product-quantities', JSON.stringify(quantities));
+            } catch {
+            }
+        }
+
+        function changeQuantity(card, amount) {
+            const productId = card.dataset.productId;
+            const nextQuantity = (quantities[productId] || 0) + amount;
+            if (nextQuantity > 0) quantities[productId] = nextQuantity;
+            else delete quantities[productId];
+            updateCart();
+        }
+
+        productCards.forEach((card) => {
+            card.querySelector('.add-button').addEventListener('click', () => changeQuantity(card, 1));
+            card.querySelectorAll('.quantity-button').forEach((button) => {
+                button.addEventListener('click', () => changeQuantity(card, Number(button.dataset.change)));
+            });
+        });
+
+        updateCart();
+    </script>
+</body>
+</html>
