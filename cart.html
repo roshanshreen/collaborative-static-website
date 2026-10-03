@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f2ed">
+    <title>Your bag | ShopEase</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="wordmark" href="index.html" aria-label="ShopEase home">shop<span>ease</span><i>.</i></a>
+        <p class="header-note">Thoughtful things for every day</p>
+        <a class="cart-button" href="cart.html" aria-label="Open bag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+            <span class="cart-label">Bag</span>
+            <span class="cart-count" aria-live="polite">0</span>
+        </a>
+    </header>
+
+    <main class="page">
+        <a class="back-link" href="index.html#collection">&larr; Keep shopping</a>
+        <h1 class="page-title">Your bag</h1>
+        <p class="page-sub" id="sub"></p>
+        <div id="cart"></div>
+    </main>
+
+    <script src="shop.js"></script>
+    <script>
+        const cartEl = document.getElementById('cart');
+        const subEl = document.getElementById('sub');
+
+        function render() {
+            const cart = getCart();
+            const ids = Object.keys(cart);
+
+            if (!ids.length) {
+                subEl.textContent = '';
+                cartEl.innerHTML = '<div class="empty"><h2>Your bag is empty</h2><p>Add something from the collection and it will show up here.</p><a class="buy-button" href="index.html#collection">Browse the collection</a></div>';
+                return;
+            }
+
+            let items = 0, total = 0;
+            const rows = ids.map((id) => {
+                const p = PRODUCTS[id], q = cart[id];
+                items += q; total += p.price * q;
+                return `
+                <div class="cart-row">
+                    <a href="product-details.html?id=${id}"><img src="${p.image}" alt="${p.name}"></a>
+                    <div>
+                        <h3>${p.name}</h3>
+                        <p class="unit">${rupees(p.price)} each</p>
+                        <div class="stepper">
+                            <button type="button" data-id="${id}" data-act="-1" aria-label="Decrease ${p.name}">-</button>
+                            <span>${q}</span>
+                            <button type="button" data-id="${id}" data-act="1" aria-label="Increase ${p.name}">+</button>
+                        </div>
+                    </div>
+                    <div class="line-end">
+                        <p class="line-total">${rupees(p.price * q)}</p>
+                        <button type="button" class="remove-link" data-id="${id}" data-act="remove">Remove</button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            subEl.textContent = items + (items === 1 ? ' item' : ' items');
+            cartEl.innerHTML = `
+                <div class="cart-layout">
+                    <div>${rows}</div>
+                    <aside class="summary">
+                        <h2>Order summary</h2>
+                        <div class="summary-line"><span>Items (${items})</span><span>${rupees(total)}</span></div>
+                        <div class="summary-total"><span>Total</span><span>${rupees(total)}</span></div>
+                        <a class="buy-button" href="order.html">Continue to order</a>
+                        <a class="more-link" href="index.html#collection">Keep shopping</a>
+                    </aside>
+                </div>`;
+        }
+
+        cartEl.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-id]');
+            if (!btn) return;
+            const cart = getCart();
+            const id = btn.dataset.id;
+            if (btn.dataset.act === 'remove') {
+                delete cart[id];
+            } else {
+                cart[id] = (cart[id] || 0) + Number(btn.dataset.act);
+                if (cart[id] <= 0) delete cart[id];
+            }
+            saveCart(cart);
+            render();
+        });
+
+        render();
+    </script>
+</body>
+</html>
