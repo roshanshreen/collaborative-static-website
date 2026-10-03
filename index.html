@@ -162,7 +162,15 @@
                 button.addEventListener('click', () => changeQuantity(card, Number(button.dataset.change)));
             });
         });
-
+productCards.forEach((card) => {
+    card.querySelectorAll('.product-image, .product-info').forEach((el) => {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', () => {
+            location.href = `product-details.html?id=${card.dataset.productId}`;
+        });
+    });
+});
+cartButton.addEventListener('click', () => { location.href = 'cart.html'; });
         updateCart();
     </script>
 </body>
