@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f2ed">
+    <title>Product | ShopEase</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="wordmark" href="index.html" aria-label="ShopEase home">shop<span>ease</span><i>.</i></a>
+        <p class="header-note">Thoughtful things for every day</p>
+        <a class="cart-button" href="cart.html" aria-label="Open bag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+            <span class="cart-label">Bag</span>
+            <span class="cart-count" aria-live="polite">0</span>
+        </a>
+    </header>
+
+    <main class="page" id="detail"></main>
+
+    <script src="shop.js"></script>
+    <script>
+        const root = document.getElementById('detail');
+        const id = new URLSearchParams(location.search).get('id');
+        const product = PRODUCTS[id];
+
+        if (!product) {
+            root.innerHTML = '<div class="empty"><h2>We couldn\'t find that product</h2><a class="buy-button" href="index.html#collection">Back to the collection</a></div>';
+        } else {
+            document.title = product.name + ' | ShopEase';
+            let qty = 1;
+            root.innerHTML = `
+                <a class="back-link" href="index.html#collection">&larr; Back to the collection</a>
+                <div class="detail-grid">
+                    <div class="detail-visual"><img src="${product.image}" alt="${product.name}"></div>
+                    <div class="detail-info">
+                        <p class="eyebrow">${product.tagline}</p>
+                        <h1>${product.name}</h1>
+                        <p class="detail-price">${rupees(product.price)}</p>
+                        <p class="detail-desc">${product.description}</p>
+                        <div class="detail-buy">
+                            <div class="stepper">
+                                <button type="button" id="minus" aria-label="Decrease quantity">-</button>
+                                <span id="qty" aria-live="polite">1</span>
+                                <button type="button" id="plus" aria-label="Increase quantity">+</button>
+                            </div>
+                            <button type="button" class="buy-button" id="add">Add to bag</button>
+                        </div>
+                        <p class="added-note" id="note" hidden>Added to your bag. <a href="cart.html">View bag</a></p>
+                    </div>
+                </div>`;
+
+            const qtyEl = document.getElementById('qty');
+            document.getElementById('minus').addEventListener('click', () => { qty = Math.max(1, qty - 1); qtyEl.textContent = qty; });
+            document.getElementById('plus').addEventListener('click', () => { qty += 1; qtyEl.textContent = qty; });
+            document.getElementById('add').addEventListener('click', () => {
+                const cart = getCart();
+                cart[id] = (cart[id] || 0) + qty;
+                saveCart(cart);
+                document.getElementById('note').hidden = false;
+            });
+        }
+    </script>
+</body>
+</html>
